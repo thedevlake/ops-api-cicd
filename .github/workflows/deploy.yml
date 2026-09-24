@@ -64,7 +64,7 @@ jobs:
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
 
-          printf '%s\n' "$SSH_KEY" > ~/.ssh/ops-api-ec2
+          printf '%s' "$SSH_KEY" | base64 --decode > ~/.ssh/ops-api-ec2
           chmod 600 ~/.ssh/ops-api-ec2
 
           ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts
